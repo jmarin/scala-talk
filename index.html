@@ -60,7 +60,110 @@
 					</ul>	
 				</section>
 
-								<section>
+				<section>
+          <h1>The rise of functional programming</h1>
+				</section>				
+
+				<section>
+					<h3>The free lunch is over</h3>			
+          <img src="img/moores_law.png"></img>
+				</section>
+
+				<section>
+				  <h2>Parallel code is good</h2>
+				  <p><img src="img/AmdahlsLaw.png"></img></p>
+				</section>
+
+				<section>
+          <h3>Functional languages favor <b>Immutability</b></h3>
+					<p>This means no shared state, easier to concurrently read and write</p>
+				</section>
+
+				<section>
+          <h3>Functional languages are also expressive and work well with data structures</h3>
+					<p>Doing some work on an array in Javascript</p>
+					<pre><code>var i;
+for(i = 0; i < someArray.length; i++) {
+  var someThing = someArray[i];
+  doSomeWorkOn(someThing);
+}</code></pre>
+
+          <p>Much better with the underscore.js library:</p>
+					<pre><code>_.each(someArray, doSomeWorkOn);</code></pre>
+
+				</section>
+
+				<section>
+				  <h3>Some popular functional programming languages</h3>
+            <ul>
+					    <li><b>Haskell</b>: purely functional, built in concurrency and parallelism</li>
+					    <li><b>Scala</b>: strongly typed object oriented and functional, runs on the JVM</li>
+					    <li><b>Clojure</b>: functional and dynamic, runs on the JVM</li>
+					    <li><b>F#</b>: strongly typed, imperative and functional, runs on .NET</li>
+				    </ul>
+        </section>
+
+								
+				<section>
+	        <h3>Java is everywhere</h3>
+					<img src="img/java_logo.png"></img>
+					<ul>
+						<li>Widespread in enterprise computing (unless you prefer .NET)</li>
+						<li>Over 1 billion Android devices</li>
+						<li>The JVM has over two decades of solid engineering</li>
+						<li>Scales extremely well (large projects)</li>
+						<li>Unless you are a very good C/C++ developer, it's probably faster than what you are using</li>
+						<li>Very mature open source ecosystem</li>
+					</ul>				
+				</section>
+
+				<section>
+					<h3>Java the language is by no means perfect</h3>
+					<ul>
+					  <li>Very verbose</li>
+						<li>Lacks modern features</li>
+						<li>Imperative language, hard to do certain things</li>
+						<li>Great support for concurrency, but very hard to do right</li>
+						<li>Not really a functional language, introducing some now</li>
+            <li>Much better at JDK 8</li>
+					</ul>				
+				</section>
+
+        <section>
+          <img src="img/scala_logo.png"></img>
+				</section>				
+
+				<section>
+          <h2>
+            Scala has become the main alternative to Java on the JVM
+					</h2>
+				</section>
+
+				<section>
+          <h3>Who uses Scala</h3>
+					<ul>
+            <li>Internet companies: Twitter, Foursquare, Tumblr, LinkedIn</li>
+						<li>Online media: The Guardian, The New York Times, The Huffington Post, NBC</li>
+						<li>Large Internet retail: Walmart Canada, Gilt</li>
+						<li>Large business: Verizon, Sony Pictures, Siemens
+						<li>Too many startups to list here</li>
+						<li>Places where scale matters: Netflix, Coursera</li>
+						<li>Spark in Big Data space. More on that later</li>
+					</ul>
+				</section>
+
+
+				<section>
+				  <h2>Big Data with Scala: Spark</h2>
+					<img src="img/spark_activity.jpg"></img>
+				</section>
+
+				<section>
+				  <h2>Oh, the heresy. Compiling Scala to Javascript: Scala.js</h2>
+					<a href="http://www.scala-js-fiddle.com/">Demo</a>
+				</section>
+
+				<section>
 					<h1>Thank You</h1>
 				</section>	
 
