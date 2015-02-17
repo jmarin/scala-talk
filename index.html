@@ -118,7 +118,7 @@
 
 				<section>
           <h3>Functional languages favor <b>Immutability</b></h3>
-					<p>This means no shared state, easier to concurrently read and write</p>
+					<p>This means no shared state, easier to read and write concurrently</p>
 					<p>Code can be sent where the data is</p>
 				</section>
 
@@ -317,9 +317,9 @@ x = 3 // error: reassignment to val
 val geometry: Geometry = ...
 
 geometry match {
-	case p:Point => println(s"$p.x, $p.y")
-	case line:Line => println(line.length)
-	case poly:Polygon => println(poly.perimeter)
+  case p:Point => println(s"$p.x, $p.y")
+  case line:Line => println(line.length)
+  case poly:Polygon => println(poly.perimeter)
 }
 					</code>
 					</pre>
