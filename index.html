@@ -47,15 +47,14 @@
 				<section>
 					<h3>Juan Marin Otero</h3>
 					<ul>
-					  <li>Software Engineer past 15 years</li>
-					  <li>GIS Software developer</li>
-					  <li>Open Source</li>
+					  <li>Software engineering for the past 15 years</li>
+					  <li>GIS & Open Source</li>
 						<li>Now: Solutions Architect for HMDA Operations</li>
 						<li>Previously:</li> 
 							<ul>
 									<li>CTO at Boundlessgeo</li>
-									<li>Architect for National Broadband Map at FCC</li>
-									<li>Esri</li>
+									<li>Lead Developer for National Broadband Map at FCC</li>
+									<li>Solutions Engineer at Esri</li>
 							</ul>
 					</ul>	
 				</section>
@@ -74,9 +73,53 @@
 				  <p><img src="img/AmdahlsLaw.png"></img></p>
 				</section>
 
+        <section>
+				  <h3>Broadband Mobile Coverage</h3>
+					<img src="img/mobile_coverage.png"></img>
+				</section>
+
+				<section>
+          <h3>Not just your phone</h3>
+					<img src="img/internet_things.jpg"></img>
+				</section>
+
+				<section>
+				  <h3>The need to scale: Cloud Native Applications</h3>
+					<ul>
+					  <li>Aware of infrastructure, scales resources up and down appropriately</li>
+						<li>Doesn't assume much about users and environment. Expects failure</li>
+						<li>Cost aware, adapts to different runtime conditions</li>
+						<li>Resilient to disaster</li>
+						<li>Can be deployed to multiple infrastructure options</li>
+						<li>Incremental deployment, completely testable</li>
+					</ul>				
+					<p>For more, see <a href="http://thenewstack.io/reactive-frameworks-microservices-docker-and-other-necessities-for-scalable-cloud-native-applications/">this</a></p>
+				</section>
+
+				<section>
+				  <h3><a href="http://www.reactivemanifesto.org">The Reactive Manifesto</a></h3>
+					<p>Approach to systems architecture to meet modern demands</p>
+					<p>Reactive Systems are:</p>
+					<ul>
+						<li><b>Responsive:</b> The system responds in a timely manner if at all possible</li>
+						<li><b>Resilient:</b> The system stays responsible in the face of failure</li>
+						<li><b>Elastic:</b> The system stays responsive under varying workload</li>
+						<li><b>Message Driven:</b> Reactive systems rely on asynchronous message-passing that ensures loose coupling, isolation, location transparency and provides a means to delegate errors as messages</li>
+					</ul>
+				</section>
+				
+        <section>
+				  <h3>You can also think about it this way</h3>
+					<ul>
+					<li>Resources, not hardware</li>
+					<li>Cattle machines, not pet machines</li>
+					<li>Service Oriented Architecture (but this is not your traditional SOA!)</li>
+				</section>
+
 				<section>
           <h3>Functional languages favor <b>Immutability</b></h3>
 					<p>This means no shared state, easier to concurrently read and write</p>
+					<p>Code can be sent where the data is</p>
 				</section>
 
 				<section>
@@ -140,6 +183,583 @@ for(i = 0; i < someArray.length; i++) {
 				</section>
 
 				<section>
+				  <h2>Scala language tour</h2>
+				</section>
+
+				<section>
+          <h3>Some nice features</h3>
+					<ul>
+            <li>Very Compact language</li>
+						<li>Type inference</li>
+						<li>Immutability</li>
+						<li>Pattern matching</li>
+						<li>Collections API</li>
+						<li>Extensible language: great for DSL</li>
+					</ul>
+				</section>
+
+				<section>
+				  <h3>Defining a class</h3>
+					<br />
+					<h3>Java</h3>
+					<pre>
+					<code>
+class Point {
+    private int x;
+    private int y;
+ 
+    public Point(int x, int y) {
+      setX(x);
+      setY(y);
+    }
+ 
+    public int getX() {
+      return x;
+    }
+ 
+    public void setX(int x) {
+      this.x = x;
+    }
+ 
+    public int getY() {
+      return y;
+    }
+ 
+    public void setY(int y) {
+      this.y = y;
+    }
+ 
+    @Override
+    public boolean equals(Object other) {
+      if (other instanceof Point) {
+        Point otherPoint = (Point) other;
+        return otherPoint.getX() == getX() &&
+            otherPoint.getY() == getY();
+      } else {
+        return false;
+      }
+    }
+ 
+    @Override
+    public int hashCode() {
+      return (new Integer[] {getX(), getY()}).hashCode();
+    }
+}
+					</code>
+					</pre>
+
+				</section>
+
+				<section>
+				  <h3>Defining a class</h3>
+					<br />
+					<h3>Python</h3>
+					<pre>
+					<code>
+class Point:
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+ 
+  def __eq__(self, other):
+    if isinstance(other, Point):
+      return other.x == self.x and other.y == self.y
+    else:
+      return False
+ 
+  def __hash__(self):
+    return hash((self.x, self.y))
+	
+					</code>
+					</pre>
+				</section>				
+								
+				<section>
+				  <h3>Defining a class</h3>
+					<br />
+					<h3>Scala</h3>
+					<br />
+					<pre>
+					<code>
+case class Point(var x: Int, var y: Int)
+					</code>
+					</pre>
+				</section>
+
+				<section>
+					<h3>Type Inference</h3>
+					<pre>
+					<code>
+val x = 1 + 2 * 3 // The type of x is Int
+
+val y = x.toString // The type of y is String
+
+def add(x:Int) = x + 1 // Add returns Int values
+					</code>
+					</pre>
+				</section>
+
+				<section>
+  				<h3>Immutability</h3>
+					<pre>
+					<code>
+val x = 2  // Declare immutable variable
+
+x = 3 // error: reassignment to val
+					</code>
+					</pre>
+				</section>
+
+				<section>
+					<h3>Pattern matching</h3>
+				  <pre>
+					<code>
+val geometry: Geometry = ...
+
+geometry match {
+	case p:Point => println(s"$p.x, $p.y")
+	case line:Line => println(line.length)
+	case poly:Polygon => println(poly.perimeter)
+}
+					</code>
+					</pre>
+				</section>
+	
+
+				<section>
+				  <h3>Collections API</h3>
+					<pre>
+					<code>
+val points:List[Point] = ...
+
+val polygon: Polygon = ...
+
+// If point is inside polygon, print it
+
+points.foreach(p => if polygon.contains(p) println(p))
+
+// Create a buffer around each point, return that collection of polygons
+
+points.map(p => p.buffer(1.0))
+
+// Buffer points that are inside the polygon
+
+points.map { p =>
+	val pt = polygon.contains(p)
+	pt.buffer(1.0)
+}
+
+					</code>
+					</pre>
+				</section>
+
+
+				<section>
+				  <h3>This conciseness is powerful, but can be addictive and dangerous!</h3>
+					<p>Make sure you understand things like the following before writing them</p>
+					<p>From <a href="https://mkaz.com/2011/05/31/10-scala-one-liners-to-impress-your-friends/">10 Scala One Liners to Impress Your Friends:</a>
+					<pre>
+					<code>
+// Filter list of numbers into two categories based on a criteria
+
+val (passed, failed) = List(49, 58, 76, 82, 88, 90) partition ( _ > 60 )
+
+// Sum list of numbers
+
+(1 to 1000).reduceLeft( _ + _ )
+
+// Sieve of Eratosthenes, algorithm to calculate if a number is prime
+
+(n: Int) => (2 to n) |> (r => r.foldLeft(r.toSet)((ps, x) => if (ps(x)) ps -- (x * x to n by x) else ps))
+					</code>
+					</pre>
+									</section>
+
+				<section>
+  			  <h3>Yeah, I know. This is crazy</h3>
+					<p>It's also beautiful if you understand it</p>
+				</section>
+
+				<section>
+				  <h3>Domain Specific Languages</h3>
+					<p>
+					<i>A computer programming language of limited expressiveness focused on a particular domain (Martin Fowler, 2010)</i>
+					</p>
+					<p>Scala is great for defining your own language.
+					Example from ScalaTest:</p>
+					<pre>
+					<code>
+import collection.mutable.Stack
+import org.scalatest._
+
+class ExampleSpec extends FlatSpec with Matchers {
+
+  "A Stack" should "pop values in last-in-first-out order" in {
+    val stack = new Stack[Int]
+    stack.push(1)
+    stack.push(2)
+    stack.pop() should be (2)
+    stack.pop() should be (1)
+  }
+
+  it should "throw NoSuchElementException if an empty stack is popped" in {
+    val emptyStack = new Stack[Int]
+    a [NoSuchElementException] should be thrownBy {
+      emptyStack.pop()
+    } 
+  }
+}					</code>
+					</pre>
+
+					<p><a href="http://www.slideshare.net/krikava/domain-specific-languages-and-scala">Good presentation on the topic</a></p>
+				</section>
+
+				<section>
+				  <h3>Concurrency and parallelism</h3>
+					<p>This is where Scala really shines</p>
+					<ul>
+					  <li>Futures</li>
+						<li>Actor Model</li>
+						<li>Reactive Streams</li>
+						<li>High performance web applications</li>
+					</ul>
+				</section>
+
+				<section>
+				  <h2>Futures and Promises</h2>
+					<h4>Future: a read only object holding a value that might become available at a later time</h4>
+					<h4>Promise: a writable, single assignment container which "completes" a future</h4>
+				</section>
+
+				<section>
+				  <h3>Scala Futures</h3>
+					<h4>Example 1: Blocking future until it returns</h4>
+					<pre>
+					<code>
+import scala.concurrent._
+import scala.concurrent.duration._
+
+def main(args: Array[String]) {
+  val rateQuote = future {
+    connection.getCurrentValue(USD)
+  }
+  
+  val purchase = rateQuote map { quote =>
+    if (isProfitable(quote)) connection.buy(amount, quote)
+    else throw new Exception("not profitable")
+  }
+  
+  Await.result(purchase, 0 nanos) // THIS BLOCKS! (use only for testing)
+}
+					</code>
+					</pre>
+
+
+				</section>
+
+				<section>
+					<h3>Scala Futures</h3>			
+				  <h4>Example 2: Callback</h4>
+					<pre>
+				  <code>
+import scala.util.{Success, Failure}
+
+val f: List[Future[Double]] = future {
+  connection.getCurrentValues(USD, EUR)
+}
+
+f onComplete {
+  case Success(posts) => for (post <- posts) println(post)
+  case Failute(t) => println("An error has occured: " + t.getMessage)
+}
+					</code>
+					</pre>
+
+					Avoid callbacks in nested future calls (callback hell)
+				</section>
+
+				<section>
+				  <h3>Scala Futures</h3>
+					<h4>Example 3: For comprehensions and composition</h4>
+			    <pre>
+          <code>
+val usdQuote = future { connection.getCurrentValue(USD) }
+val chfQuote = future { connection.getCurrentValue(CHF) }
+val purchase = for {
+  usd <- usdQuote
+  eur <- chfQuote
+  if isProfitable(usd, eur)
+} yield connection.buy(amount, eur)
+purchase onSuccess {
+  case _ => println("Purchased " + amount + " EUR")
+}
+					</code>
+					</pre>
+				</section>
+
+
+				<section>
+				  <h3>Scala Futures using Async</h3>
+					An easier way to write asynchronous and non blocking code
+					<pre>
+          <code>
+def slowCalcFuture: Future[Int] = ...             // 01
+def combined: Future[Int] = async {               // 02
+  await(slowCalcFuture) + await(slowCalcFuture)   // 03
+}
+val x: Int = Await.result(combined, 10.seconds)   // 05
+					</code>
+					</pre>
+					<p>In this example, lines 1-4 are non-blocking, but not parallel. To parallelize both computations:
+
+					<pre>
+					<code>
+def combined: Future[Int] = async {
+  val future1 = slowCalcFuture
+  val future2 = slowCalcFuture
+  await(future1) + await(future2)
+}
+					</code>
+					</pre>
+
+				</section>
+
+				<section>
+          <h3>Scala Parallel Collections</h3>
+					<h4>Example: Reduce elements of an array in parallel (using multiple CPUs)</h4>
+					<pre>
+					<code>
+val array = (1 to 100000).toArray
+array.par.reduce(_ + _)
+					</code>
+					</pre>
+					<p>Note: the advantages of this are only visible in large collections</p>
+				</section>
+
+				<section>
+ 				  <h2>Actor Model</h2>
+					<p>Main implementation in the Akka library</p>
+					<i>Akka is a toolkit and runtime
+for building highly concurrent,
+distributed, and resilient
+message-driven applications
+on the JVM.</i>
+				</section>
+
+				<section>
+				  <h3>Actor Model</h3>
+					<p><i>An actor is a primitive that can make local decisions, create more actors, send more messages, and determine how to respond to the next message received</i></p>
+
+					<p>Very small memory footprint: ~2.5 million / GB of memory</p>
+				</section>
+
+				<section>
+				  <h3>Hello World in Akka Actors</h3>
+					<pre>
+					<code>
+import akka.actor.{ActorSystem, Actor, ActorLogging, Props }
+
+case class Greeting(who: String)
+ 
+class GreetingActor extends Actor with ActorLogging {
+  def receive = {
+    case Greeting(who) ⇒ log.info("Hello " + who)
+  }
+}
+ 
+val system = ActorSystem("MySystem")
+val greeter = system.actorOf(Props[GreetingActor], name = "greeter")
+greeter ! Greeting("Mr. Smith")
+					</code>
+					</pre>
+				</section>
+
+
+				<section>
+				  <h3>Two types of messages</h3>
+					<ul>
+						<li><b>Tell:</b> fire and forget, doesn't return anything</li>
+						<pre><code>
+def receive = {
+  case Greeting(who) ⇒ log.info("Hello " + who)
+}						
+						</code></pre>
+						<pre><code>greeter ! Greeting("Mr. Smith")</code></pre>
+						<li><b>Ask:</b> returns a future</li>
+						<pre><code>
+def receive: Receive = {
+  case Greeting(who) => sender() ! "Hello, " + who
+}
+						</code></pre>
+						<pre><code>val f:Future[String] = greeter ? Greeting("Mr Smith")</code></pre>
+					</ul>
+
+					<p>Both are asynchronous and non blocking(*)</p>
+				</section>
+
+				<section>
+				  <h3>Actors killer feature: Supervision</h3>
+					<img src="img/actor_supervision.png"></img>
+				</section>
+
+				<section>
+  			  <h3>Actors killer feature: Location Transparency</h3>
+					<p>Remote and local process actors treated the same</p>
+					<p>Unified programming model for multicore and distributed computing</p>
+					<img src="img/location_transparency.png"></img>
+				</section>
+
+				<section>
+				  <h3>Demo: Distributed Workers</h3>
+					<img src="img/distributed_workers.png"></img>
+				</section>
+
+				<section>
+				  <h3>This is my test cluster :-)</h3>
+					<img src="img/rpi_cluster.jpg"></img>
+				</section>
+
+				<section>
+				  <h3>Reactive Streams</h3>
+					<p><i>Reactive Streams is an initiative to provide a standard for asynchronous stream processing with non-blocking back pressure on the JVM.</i></p>
+					<br />
+					<ul>
+					  <li>Govern exchange of stream data across asynchronous boundary (thread, different machine)</li>
+						<li>Deal with backpressure in a fully non-blocking and asynchronous manner</li>
+						<li>Fast data producer doesn't overwhelm slow consumer</li>
+						<li>Dynamic push / pull model</li>
+						<li>Collaborative effort by engineers from Typesafe, Oracle, Pivotal, Netflix, Red Hat and others</li>
+					<ul>
+					<br />
+					<p>A good read: <a href="http://ferd.ca/queues-don-t-fix-overload.html">Queues don't fix overload</a>
+				</section>
+
+				<section>
+					<h3>How this works</h3>
+				  <img src="img/reactive_streams.png"></img>
+				</section>
+
+				<section>
+				  <h3>Akka Streams Example</h3>
+					<pre><code>
+import akka.actor.ActorSystem
+import akka.stream.ActorFlowMaterializer
+import akka.stream.scaladsl.Source
+
+object BasicTransformation {
+  def main(args: Array[String]): Unit = {
+    implicit val system = ActorSystem("Sys")
+    import system.dispatcher
+    implicit val materializer = ActorFlowMaterializer()
+
+    val text =
+      """|Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+         |Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+         |specimen book.""".stripMargin
+
+    Source(() => text.split("\\s").iterator).
+      map(_.toUpperCase).
+      runForeach(println).
+      onComplete(_ => system.shutdown())
+ }
+}
+					</code></pre>
+				</section>
+
+				<section>
+          <h3>High Performance Web Applications with the Play Framework</h3>
+					<ul>
+					  <li>Full MVC web framework</li>
+						<li>Type safety</li>
+						<li>First class REST and JSON support</li>
+						<li>Reactive, uses Akka under the hood</li>
+						<li>Asset compiler (Javascript, LESS, CSS, etc)</li>
+					</ul>
+				</section>
+
+				<section>
+				  <h3>Routes</h3>
+					<pre><code>
+GET   /     controllers.Application.index()
+GET   /foo  controllers.Application.foo()   
+					</code></pre>
+          <h3>Controllers</h3>
+					<pre><code>
+def index() {
+  Ok(views.html.index("Scala Play Demo"))
+}
+					</code></pre>
+					<h3>Views</h3>
+					<pre><code>
+@(title: String)(content: Html)
+
+&lt;html&gt;
+  &lt;head&gt;
+    <title>@title</title>
+    <link rel="stylesheet" href="@routes.Assets.at('stylesheets/main.css')"></link>
+    <link rel="stylesheet" href="@routes.Assets.at('stylesheets/bootstrap.min.css')"></link>
+  &lt;/head&gt;
+  &lt;body&gt;
+    @content
+  &lt;/body&gt;
+&lt;/html&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Websockets</h3>
+					<h4>Server</h4>
+  			  <pre><code>
+def echoWs = WebSocket.using[String] { request =>
+    val (enumerator, channel) = Concurrent.broadcast[String]
+    val in = Iteratee.foreach[String](channel.push)
+    (in, enumerator)
+}
+          </code></pre>
+					<h4>Client in Coffescript</h4>
+					<pre><code>
+$ ->
+    ws = new WebSocket("ws://localhost:9000/echo")
+    ws.onopen = () ->
+        ws.send("foo")
+    ws.onmessage = (message) ->
+        console.log(message.data)					
+					</code></pre>
+				</section>
+
+				<section>
+				  <h3>Play Framework Demo</h3>
+					<h4><a href="http://localhost:9000">Reactive scales</a></h4>
+				</section>
+								
+				<section>
+				  <h3>Big Data with Scala: Spark</h3>
+					<img src="img/spark_activity.jpg"></img>
+					<p>Also, it's 10 - 100x faster than Hadoop</p>
+				</section>
+
+				<section>
+				  <h3>Spark: not just Map Reduce</h3>
+					<img src="img/spark_stack.png"></img>
+				</section>
+
+				<section>
+				  <h3>Oh, the heresy. Compiling Scala to Javascript: Scala.js</h3>
+					<a href="http://www.scala-js-fiddle.com/">Demo</a>
+				</section>
+
+				<section>
+					<h2>Scala ecosystem</h2>
+					<ul>
+						<li><a href="https://playframework.com/">Play Framework</a> and <a href="http://liftweb.net/">Lift</a> for web frameworks</li>
+						<li><a href="http://akka.io/">Akka</a> and <a href="https://twitter.github.io/finagle/">Finagle</a> for backend services</li>
+						<li><a href="http://slick.typesafe.com/">Slick</a> for Functional Relational Mapping</li>
+						<li><a href="http://etorreborre.github.io/specs2/">Specs2</a>, <a href="http://scalacheck.org/">ScalaCheck</a>, <a href="http://www.scalatest.org/">ScalaTest</a> for testing</li>
+						<li><a href="https://spark.apache.org/">Spark</a>, <a href="http://kafka.apache.org/">Kafka</a> for Big Data</li>
+					</ul>
+				</section>
+
+				<section>
           <h3>Who uses Scala</h3>
 					<ul>
             <li>Internet companies: Twitter, Foursquare, Tumblr, Klout, LinkedIn</li>
@@ -153,20 +773,10 @@ for(i = 0; i < someArray.length; i++) {
 					</ul>
 				</section>
 
-
-				<section>
-				  <h2>Big Data with Scala: Spark</h2>
-					<img src="img/spark_activity.jpg"></img>
-				</section>
-
-				<section>
-				  <h2>Oh, the heresy. Compiling Scala to Javascript: Scala.js</h2>
-					<a href="http://www.scala-js-fiddle.com/">Demo</a>
-				</section>
-
 				<section>
 					<h1>Thank You</h1>
 				</section>	
+
 
 			</div>
 		</div>	
