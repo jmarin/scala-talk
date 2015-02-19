@@ -205,6 +205,7 @@ for(i = 0; i < someArray.length; i++) {
 						<li>Immutability</li>
 						<li>Pattern matching</li>
 						<li>Collections API</li>
+						<li>Functional composition</li>
 						<li>Extensible language: great for DSL</li>
 					</ul>
 				</section>
@@ -390,6 +391,27 @@ val (passed, failed) = List(49, 58, 76, 82, 88, 90) partition ( _ > 60 )
   			  <h3>Yeah, I know. This is crazy</h3>
 					<p>It's also beautiful if you understand it</p>
 				</section>
+
+        <section>
+				  <h3>Functional Composition</h3>
+					<p>Automatically mark all emails from my mom as read in my inbox</p>
+					<pre>
+					<code>
+emails.filter(_.isNotSpam).filter(_.sender == "Mom").map(_.copy(isRead = true))					    
+					</code>
+					</pre>
+					<p>Or using a for comprehension</p>
+					<pre>
+          <code>
+for {
+  notSpam <- emails if emails.isNotSpam == true
+  momEmails <- notSpam if emails.sender == "Mom"
+  read <- notSpam.copy(isRead = true)
+} yield read
+					</code>
+					</pre>
+				</section>
+
 
 				<section>
 				  <h3>Domain Specific Languages</h3>
