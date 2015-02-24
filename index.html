@@ -502,8 +502,8 @@ val f: List[Future[Double]] = future {
 }
 
 f onComplete {
-  case Success(posts) => for (post <- posts) println(post)
-  case Failute(t) => println("An error has occured: " + t.getMessage)
+  case Success(quotes) => for (quote <- quotes) println(quote)
+  case Failure(t) => println("An error has occured: " + t.getMessage)
 }
 					</code>
 					</pre>
